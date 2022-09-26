@@ -6,13 +6,10 @@ namespace ReArrangeString.BL.Services
 {
     public class OrderStringsService : IOrderStringsService
     {
-        /// <summary>
-        /// 
-        /// </summary>
         private readonly IValidator _validator;
 
         /// <summary>
-        /// Creates a new instanca of a OrderStringsService
+        /// Creates a new instance of a OrderStringsService
         /// </summary>
         /// <param name="validator"></param>
         public OrderStringsService(IValidator validator)
@@ -30,19 +27,21 @@ namespace ReArrangeString.BL.Services
         {
             List<string> orderedStrings = new List<string>();
             try
-            {                
+            {   
+                // Do sanity check of input names and order sequence
                 if (_validator.IsValid(strings, order))
                 {
                     for (int i = 0; i < order.Length; i++)
                     {
-                        var list = strings.Split(strings);
-                        orderedStrings.Add(list[int.Parse(order[i].ToString())]);
+                        var list = strings.Split(' ');
+                        var index = int.Parse(order[i].ToString());
+                        orderedStrings.Add(list[index - 1]);
                     }
                 }
             }
             catch (Exception ex)
             {
-                return null;
+                return Array.Empty<string>();
             }
             return orderedStrings.ToArray();
         }

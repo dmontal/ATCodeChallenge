@@ -10,7 +10,8 @@ namespace ReArrengeString.Tests
         public void GetOrderStrings_Success()
         {
             // arrenge
-            var sut = builder.Build();
+            var sut = builder.UseIsValid(true)
+                .Build();
             // act
             var result = sut.GetOrderStrings("Sonia Maria Wood Dempster", new char[] {'4', '3', '2', '1' });
             // assert
@@ -27,7 +28,7 @@ namespace ReArrengeString.Tests
             // act
             var result = sut.GetOrderStrings(null, new char[] { '4', '3', '2', '1' });
             // assert
-            Assert.IsNull(result);
+            Assert.IsTrue(result.Length == 0);
         }
 
         [Test]
@@ -38,73 +39,7 @@ namespace ReArrengeString.Tests
             // act
             var result = sut.GetOrderStrings("Sonia Maria Wood Dempster", null);
             // assert
-            Assert.IsNull(result);
-        }
-
-        [Test]
-        public void GetOrderStrings_StringsIsEmpty()
-        {
-            // arrenge
-
-            // act
-
-            // assert
-            Assert.Pass();
-        }
-
-        [Test]
-        public void GetOrderStrings_OrderSequenceIsEmpty()
-        {
-            // arrenge
-
-            // act
-
-            // assert
-            Assert.Pass();
-        }
-
-        [Test]
-        public void GetOrderStrings_StringsAndOrderSequenceAreDifferentSize()
-        {
-            // arrenge
-
-            // act
-
-            // assert
-            Assert.Pass();
-        }
-
-        [Test]
-        public void GetOrderStrings_OrderSequenceElementIsNotANumber()
-        {
-            // arrenge
-
-            // act
-
-            // assert
-            Assert.Pass();
-        }
-
-        [Test]
-        public void GetOrderStrings_OrderSequenceElementIsOutOfBound()
-        {
-            // arrenge
-
-            // act
-
-            // assert
-            Assert.Pass();
-        }
-
-        [Test]
-        public void GetOrderStrings_OrderSequenceElementIndexIsRepeated()
-        {
-            // arrenge
-
-            // act
-
-            // assert
-            Assert.Pass();
+            Assert.IsTrue(result.Length == 0);
         }
 
         private readonly OrderStringsServiceBuilder builder = new OrderStringsServiceBuilder();

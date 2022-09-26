@@ -6,6 +6,12 @@ namespace ReArrengeString.Tests.Builder
 {
     public class OrderStringsServiceBuilder
     {
+        public OrderStringsServiceBuilder UseIsValid(bool expected)
+        {
+            validator.Setup(x => x.IsValid(It.IsAny<string>(), It.IsAny<char[]>())).Returns(expected);
+            return this;
+        }
+
         public IOrderStringsService Build()
         {
             return orderService;
@@ -13,6 +19,7 @@ namespace ReArrengeString.Tests.Builder
 
         public OrderStringsServiceBuilder()
         {
+            validator = new Mock<IValidator>();
             orderService = new OrderStringsService(validator.Object);
         }
 

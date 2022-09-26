@@ -16,7 +16,7 @@ namespace ReArrangeString.BL.Interfaces
         /// <param name="strings"></param>
         /// <param name="order"></param>
         /// <returns>true is strings to order or order sequence arrays are valid
-        /// otherwise it returns false
+        /// otherwise it throws a ValidationException with a message
         /// </returns>
         public bool IsValid(String strings, char[] order);
     }

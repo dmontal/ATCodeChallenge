@@ -29,14 +29,15 @@ namespace ReArrengeString.API.Controllers
             {
                 BadRequest(vex.Message);
             }
-            catch(Exception ex)
-            {
-                throw (ex);
-            }
             
             return Ok(result);
         }
 
+
+        /// <summary>
+        /// Creates a new instace of the order string controller
+        /// </summary>
+        /// <param name="orderService"></param>
         public OrderStringsController(IOrderStringsService orderService)
         {
             _orderService = orderService;
